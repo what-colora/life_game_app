@@ -10,7 +10,7 @@ def init_db():
     conn = sqlite3.connect(DB_NAME)
     # sqliteを操作するカーソルオブジェクトの作成
     cur = conn.cursor()
-    # id, name, gridを格納するテーブルの作成
+    # id, name, gridを格納するテーブル(patterns)の作成
     cur.execute("CREATE TABLE IF NOT EXISTS patterns (id INTEGER PRIMARY KEY, name TEXT, grid TEXT)")
     # データベースへのコミット。
     conn.commit()
