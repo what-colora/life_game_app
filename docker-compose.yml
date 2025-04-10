@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      cache_from: []  # ビルドキャッシュを無効化
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app  # ホットリロード用
+      - ./patterns.db:/app/patterns.db  # DBをホストにマウント
+    environment:
+      - FLASK_ENV=development
+    command: python app.py

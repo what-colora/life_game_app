@@ -1,0 +1,14 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(30, 15px);
+  gap: 1px;
+  width: fit-content;
+}
+.cell {
+  width: 15px;
+  height: 15px;
+  background: #ddd;
+}
+.alive {
+  background: #333;
+}
