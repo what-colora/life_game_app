@@ -1,4 +1,3 @@
-
 def next_step(grid):
     # グリッドは たて:よこ = 30:30マス
     size = 30
@@ -20,23 +19,8 @@ def next_step(grid):
             if grid[i][j] == 1:
                 result[i][j] = 1 if neighbors in [2, 3] else 0
             # 自身が死亡セルの場合の処理
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-            #else:
-            #    result[i][j] = 1 if neighbors == 3 else 0
-=======
             else:
                 result[i][j] = 1 if neighbors == 3 else 0
->>>>>>> what-colora/main
-=======
-            else:
-                result[i][j] = 1 if neighbors == 3 else 0
->>>>>>> what-colora/main
-=======
-            else:
-                result[i][j] = 1 if neighbors == 3 else 0
->>>>>>> what-colora/main
 
     return result
 

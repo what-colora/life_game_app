@@ -9,7 +9,6 @@ from contextlib import redirect_stdout
 
 # lifegame-test.py からインポート
 import importlib.util
-import sys
 
 spec = importlib.util.spec_from_file_location("lifegame_test", "lifegame-test.py")
 lifegame_test = importlib.util.module_from_spec(spec)
@@ -47,9 +46,6 @@ def load_pattern(pattern_name):
             return jsonify({"grid": pattern["grid"]})
     return jsonify({"error": "Pattern not found"}), 404
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 @app.route("/test", methods=["GET"])
 def test_page():
     return render_template("lifegame-test.html")
@@ -84,12 +80,6 @@ def run_tests():
     
     return jsonify(test_results)
 
-=======
->>>>>>> what-colora/main
-=======
->>>>>>> what-colora/main
-=======
->>>>>>> what-colora/main
 if __name__ == "__main__":
     init_db()  # 初回起動時にDBを初期化
     app.run(host='0.0.0.0', port=5000, debug=True)
