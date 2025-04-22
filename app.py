@@ -47,6 +47,7 @@ def load_pattern(pattern_name):
             return jsonify({"grid": pattern["grid"]})
     return jsonify({"error": "Pattern not found"}), 404
 
+<<<<<<< HEAD
 @app.route("/test", methods=["GET"])
 def test_page():
     return render_template("lifegame-test.html")
@@ -81,6 +82,8 @@ def run_tests():
     
     return jsonify(test_results)
 
+=======
+>>>>>>> what-colora/main
 if __name__ == "__main__":
     init_db()  # 初回起動時にDBを初期化
     app.run(host='0.0.0.0', port=5000, debug=True)
