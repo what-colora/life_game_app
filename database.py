@@ -2,6 +2,7 @@ import sqlite3
 import json
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import os
 
 # データベースファイルのパスを設定
@@ -76,6 +77,9 @@ def convert_to_full_grid(pattern):
 =======
 DB_NAME = "patterns.db"
 >>>>>>> what-colora/main
+=======
+DB_NAME = "patterns.db"
+>>>>>>> what-colora/main
 
 # データベースの初期化
 def init_db():
@@ -86,6 +90,7 @@ def init_db():
     cur = conn.cursor()
     # id, name, gridを格納するテーブル(patterns)の作成
     cur.execute("CREATE TABLE IF NOT EXISTS patterns (id INTEGER PRIMARY KEY, name TEXT, grid TEXT)")
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     # 有名なパターンが存在するか確認
@@ -106,6 +111,8 @@ def init_db():
     
 =======
 >>>>>>> what-colora/main
+=======
+>>>>>>> what-colora/main
     # データベースへのコミット。
     conn.commit()
     # データベースへのコネクションを閉じる。（必ず実施）
@@ -113,6 +120,7 @@ def init_db():
 
 # 現在のグリッド情報の保存用関数
 def save_pattern(name, grid_json):
+<<<<<<< HEAD
 <<<<<<< HEAD
     try:
         # データベースファイルが存在しない場合は初期化
@@ -164,6 +172,8 @@ def get_patterns():
             # 最終的に失敗した場合は空のリストを返す
             return []
 =======
+=======
+>>>>>>> what-colora/main
     conn = sqlite3.connect(DB_NAME)
     cur = conn.cursor()
     cur.execute("INSERT INTO patterns (name, grid) VALUES (?, ?)", (name, grid_json))

@@ -48,6 +48,7 @@ def load_pattern(pattern_name):
     return jsonify({"error": "Pattern not found"}), 404
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 @app.route("/test", methods=["GET"])
 def test_page():
     return render_template("lifegame-test.html")
@@ -82,6 +83,8 @@ def run_tests():
     
     return jsonify(test_results)
 
+=======
+>>>>>>> what-colora/main
 =======
 >>>>>>> what-colora/main
 if __name__ == "__main__":
