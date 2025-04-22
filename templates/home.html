@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life Game - ホーム</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            margin-top: 30px;
+        }
+        
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .card-link {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .card-link:hover {
+            background-color: #45a049;
+        }
+        
+        .description {
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>ライフゲーム - ホームページ</h1>
+    
+    <div class="container">
+        <div class="card">
+            <h2>ライフゲーム</h2>
+            <p class="description">
+                ライフゲーム（Conway's Game of Life）は、イギリスの数学者ジョン・ホートン・コンウェイが1970年に考案したセル・オートマトンの一種です。
+                このシミュレーションでは、単純なルールに従って、セルの集団が時間とともにどのように進化するかを観察できます。
+            </p>
+            <p class="description">
+                <strong>ルール:</strong>
+                <ul>
+                    <li>生きているセルは、周囲に2つか3つの生きているセルがある場合、次の世代でも生存する</li>
+                    <li>生きているセルは、周囲に1つ以下、または4つ以上の生きているセルがある場合、過疎または過密により死亡する</li>
+                    <li>死んでいるセルは、周囲にちょうど3つの生きているセルがある場合、次の世代で誕生する</li>
+                </ul>
+            </p>
+            <a href="/game" class="card-link">ゲームを開始</a>
+        </div>
+        
+        <div class="card">
+            <h2>テスト</h2>
+            <p class="description">
+                ライフゲームのロジックをテストするためのページです。様々なパターンや条件でライフゲームのルールが正しく機能しているかを確認できます。
+                テスト結果は視覚的に表示され、各テストケースの初期状態と次のステップの状態を比較することができます。
+            </p>
+            <a href="/test" class="card-link">テストページへ</a>
+        </div>
+        
+        <div class="card">
+            <h2>プロジェクト情報</h2>
+            <p class="description">
+                このプロジェクトはFlaskを使用して構築されており、以下のコンポーネントで構成されています：
+                <ul>
+                    <li><strong>lifegame.py</strong> - ライフゲームのコアロジック</li>
+                    <li><strong>app.py</strong> - Flaskアプリケーションとルーティング</li>
+                    <li><strong>database.py</strong> - パターンの保存と読み込み機能</li>
+                    <li><strong>lifegame_test.py</strong> - ライフゲームロジックのテストコード</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

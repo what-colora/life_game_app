@@ -1,10 +1,29 @@
 from flask import Flask, render_template, request, jsonify
 from database import init_db, save_pattern, get_patterns
+from lifegame import next_step
 import json
+import unittest
+import io
+import sys
+from contextlib import redirect_stdout
+
+# lifegame-test.py からインポート
+import importlib.util
+import sys
+
+spec = importlib.util.spec_from_file_location("lifegame_test", "lifegame-test.py")
+lifegame_test = importlib.util.module_from_spec(spec)
+sys.modules["lifegame_test"] = lifegame_test
+spec.loader.exec_module(lifegame_test)
+TestLifeGame = lifegame_test.TestLifeGame
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
+def home():
+    return render_template("home.html")
+
+@app.route("/game", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         data = request.get_json()
@@ -28,18 +47,39 @@ def load_pattern(pattern_name):
             return jsonify({"grid": pattern["grid"]})
     return jsonify({"error": "Pattern not found"}), 404
 
-def next_step(grid):
-    size = 30
-    new_grid = [[0 for _ in range(size)] for _ in range(size)]
-    for i in range(size):
-        for j in range(size):
-            neighbors = sum(grid[x][y] for x in range(max(0, i-1), min(size, i+2))
-                           for y in range(max(0, j-1), min(size, j+2)) if (x, y) != (i, j))
-            if grid[i][j] == 1:
-                new_grid[i][j] = 1 if neighbors in [2, 3] else 0
-            else:
-                new_grid[i][j] = 1 if neighbors == 3 else 0
-    return new_grid
+@app.route("/test", methods=["GET"])
+def test_page():
+    return render_template("lifegame-test.html")
+
+@app.route("/test/step", methods=["POST"])
+def test_step():
+    data = request.get_json()
+    if "grid" in data:
+        grid = data["grid"]
+        grid = next_step(grid)
+        return jsonify({"grid": grid})
+    return jsonify({"error": "Invalid request"}), 400
+
+@app.route("/test/run", methods=["GET"])
+def run_tests():
+    # テストを実行して結果を取得
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestLifeGame)
+    output = io.StringIO()
+    with redirect_stdout(output):
+        result = unittest.TextTestRunner(stream=output, verbosity=2).run(suite)
+    
+    # テスト結果を整形
+    test_output = output.getvalue()
+    test_results = {
+        "total": result.testsRun,
+        "passed": result.testsRun - len(result.failures) - len(result.errors),
+        "failures": len(result.failures),
+        "errors": len(result.errors),
+        "output": test_output,
+        "success": result.wasSuccessful()
+    }
+    
+    return jsonify(test_results)
 
 if __name__ == "__main__":
     init_db()  # 初回起動時にDBを初期化

@@ -21,7 +21,7 @@ function drawGrid() {
 }
 
 async function stepGame() {
-    const response = await fetch("/", {
+    const response = await fetch("/game", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ grid: grid, step: true })
@@ -59,7 +59,7 @@ function stopGame() {
 async function savePattern() {
     if (!isRunning) {
         const name = document.getElementById("patternName").value;
-        await fetch("/", {
+        await fetch("/game", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ save: true, name: name, grid: grid })

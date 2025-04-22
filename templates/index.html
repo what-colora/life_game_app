@@ -1,23 +1,131 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Life Game</title>
+    <title>Life Game - ゲーム</title>
     <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .nav-links {
+            margin: 20px 0;
+        }
+        
+        .nav-links a {
+            margin-right: 15px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .game-container {
+            margin: 20px 0;
+        }
+        
+        .controls {
+            margin: 20px 0;
+        }
+        
+        .controls button {
+            margin-right: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .controls button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .save-container {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .save-container input {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .save-container button {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .patterns-container {
+            margin: 20px 0;
+        }
+        
+        .patterns-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .patterns-list li {
+            margin: 5px 0;
+        }
+        
+        .patterns-list a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .patterns-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Life Game</h1>
-    <div id="grid" class="grid"></div>
-    <button id="startBtn" onclick="startGame()">Start</button>
-    <button id="stopBtn" onclick="stopGame()" disabled>Stop</button>
-    <button id="clearBtn" onclick="clearGrid()">Clear</button>
-    <input id="patternName" placeholder="Pattern Name">
-    <button onclick="savePattern()">Save</button>
-    <h2>Saved Patterns</h2>
-    <ul>
-        {% for pattern in patterns %}
-            <li><a href="#" onclick="loadPattern('{{ pattern.name }}')">{{ pattern.name }}</a></li>
-        {% endfor %}
-    </ul>
+    <h1>ライフゲーム - ゲーム</h1>
+    
+    <div class="nav-links">
+        <a href="/">ホームページへ戻る</a>
+        <a href="/test">テストページへ</a>
+    </div>
+    
+    <div class="game-container">
+        <div id="grid" class="grid"></div>
+        
+        <div class="controls">
+            <button id="startBtn" onclick="startGame()">開始</button>
+            <button id="stopBtn" onclick="stopGame()" disabled>停止</button>
+            <button id="clearBtn" onclick="clearGrid()">クリア</button>
+        </div>
+        
+        <div class="save-container">
+            <h3>パターンを保存</h3>
+            <input id="patternName" placeholder="パターン名">
+            <button onclick="savePattern()">保存</button>
+        </div>
+        
+        <div class="patterns-container">
+            <h2>保存されたパターン</h2>
+            <ul class="patterns-list">
+                {% for pattern in patterns %}
+                    <li><a href="#" onclick="loadPattern('{{ pattern.name }}')">{{ pattern.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
   <script src=/static/script.js></script>
 </body>
 </html>

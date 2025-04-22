@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life Game - テスト</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-container {
+            margin: 20px 0;
+        }
+        
+        .test-results {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .test-item {
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        
+        .test-pass {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        
+        .test-fail {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        
+        .test-error {
+            background-color: #fcf8e3;
+            color: #8a6d3b;
+        }
+        
+        .test-summary {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(30, 10px);
+            gap: 1px;
+            width: fit-content;
+            margin: 10px 0;
+        }
+        
+        .test-cell {
+            width: 10px;
+            height: 10px;
+            background: #ddd;
+        }
+        
+        .test-cell.alive {
+            background: #333;
+        }
+        
+        .test-case {
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            padding: 10px;
+        }
+        
+        .test-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .test-status {
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+        
+        .status-pass {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .status-fail {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .test-buttons {
+            margin: 20px 0;
+        }
+        
+        .test-buttons button {
+            margin-right: 10px;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .test-buttons button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .nav-links {
+            margin: 20px 0;
+        }
+        
+        .nav-links a {
+            margin-right: 15px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .visual-test {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .visual-test > div {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .simulation-container {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .simulation-grid {
+            display: grid;
+            grid-template-columns: repeat(30, 10px);
+            gap: 1px;
+            width: fit-content;
+            margin: 10px 0;
+        }
+        
+        .simulation-controls {
+            margin-top: 10px;
+        }
+        
+        .simulation-controls button {
+            margin-right: 5px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .simulation-controls button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .test-visualization {
+            margin-top: 10px;
+        }
+        
+        .test-grid-container {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 8px);
+            gap: 1px;
+            width: fit-content;
+            margin: 5px 0;
+        }
+        
+        .mini-cell {
+            width: 8px;
+            height: 8px;
+            background: #ddd;
+        }
+        
+        .mini-cell.alive {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Life Game - テスト</h1>
+    
+    <div class="nav-links">
+        <a href="/">ホームページへ戻る</a>
+        <a href="/game">ゲームページへ</a>
+    </div>
+    
+    <div class="test-buttons">
+        <button id="runAllTests">すべてのテストを実行</button>
+    </div>
+    
+    <div class="test-container">
+        <h2>テストケース</h2>
+        <div id="testCases"></div>
+        <div id="testSummary" class="test-summary"></div>
+    </div>
+    
+    <div id="simulationContainer" class="simulation-container"></div>
+    
+    <script src="/static/lifegame-test-script.js"></script>
+</body>
+</html>

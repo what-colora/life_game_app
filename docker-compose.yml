@@ -7,7 +7,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - .:/app  # ホットリロード用
+      - .:/app 
       - ./patterns.db:/app/patterns.db  # DBをホストにマウント
     environment:
       - FLASK_ENV=development
