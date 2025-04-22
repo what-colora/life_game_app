@@ -1,9 +1,5 @@
 import sqlite3
 import json
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import os
 
 # データベースファイルのパスを設定
@@ -55,6 +51,51 @@ FAMOUS_PATTERNS = {
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0]
+    ],
+    # 新しいパターンを追加
+    "パルサー": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    "ダイハード": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ],
+    "ペンタデカスロン": [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ]
 }
 
@@ -75,15 +116,6 @@ def convert_to_full_grid(pattern):
             grid[start_i + i][start_j + j] = pattern[i][j]
     
     return grid
-=======
-DB_NAME = "patterns.db"
->>>>>>> what-colora/main
-=======
-DB_NAME = "patterns.db"
->>>>>>> what-colora/main
-=======
-DB_NAME = "patterns.db"
->>>>>>> what-colora/main
 
 # データベースの初期化
 def init_db():
@@ -94,9 +126,6 @@ def init_db():
     cur = conn.cursor()
     # id, name, gridを格納するテーブル(patterns)の作成
     cur.execute("CREATE TABLE IF NOT EXISTS patterns (id INTEGER PRIMARY KEY, name TEXT, grid TEXT)")
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     
     # 有名なパターンが存在するか確認
     cur.execute("SELECT COUNT(*) FROM patterns WHERE name IN ({})".format(
@@ -114,12 +143,6 @@ def init_db():
             cur.execute("INSERT OR IGNORE INTO patterns (name, grid) VALUES (?, ?)",
                       (name, json.dumps(full_grid)))
     
-=======
->>>>>>> what-colora/main
-=======
->>>>>>> what-colora/main
-=======
->>>>>>> what-colora/main
     # データベースへのコミット。
     conn.commit()
     # データベースへのコネクションを閉じる。（必ず実施）
@@ -127,9 +150,6 @@ def init_db():
 
 # 現在のグリッド情報の保存用関数
 def save_pattern(name, grid_json):
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     try:
         # データベースファイルが存在しない場合は初期化
         init_db()
@@ -179,26 +199,6 @@ def get_patterns():
             print(f"Failed to get patterns after retry: {e2}")
             # 最終的に失敗した場合は空のリストを返す
             return []
-=======
-=======
->>>>>>> what-colora/main
-=======
->>>>>>> what-colora/main
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-    cur.execute("INSERT INTO patterns (name, grid) VALUES (?, ?)", (name, grid_json))
-    conn.commit()
-    conn.close()
-
-# 現在のグリッド情報の読み込み用関数
-def get_patterns():
-    conn = sqlite3.connect(DB_NAME)
-    cur = conn.cursor()
-    cur.execute("SELECT name, grid FROM patterns")
-    patterns = [{"name": row[0], "grid": json.loads(row[1])} for row in cur.fetchall()]
-    conn.close()
-    return patterns
->>>>>>> what-colora/main
 
 if __name__ == "__main__":
     init_db()
