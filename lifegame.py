@@ -22,8 +22,13 @@ def next_step(grid):
             # 自身が死亡セルの場合の処理
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             #else:
             #    result[i][j] = 1 if neighbors == 3 else 0
+=======
+            else:
+                result[i][j] = 1 if neighbors == 3 else 0
+>>>>>>> what-colora/main
 =======
             else:
                 result[i][j] = 1 if neighbors == 3 else 0
