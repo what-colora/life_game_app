@@ -1,9 +1,13 @@
+// 30x30のグリッドを生成し0で初期化
 let grid = Array(30).fill().map(() => Array(30).fill(0));
+// htmlタグの抽出 <div id="grid" class="grid"></div>
 const gridDiv = document.getElementById("grid");
 let isRunning = false;
 let animationId = null;
 
+
 function drawGrid() {
+    // innerHTMLプロパティ
     gridDiv.innerHTML = "";
     for (let i = 0; i < 30; i++) {
         for (let j = 0; j < 30; j++) {
