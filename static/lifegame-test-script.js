@@ -6,10 +6,16 @@ const testCases = [
         description: '空のグリッドは次のステップでも空のままであることをテスト',
         setup: () => Array(30).fill().map(() => Array(30).fill(0)),
         verify: (initialGrid, nextGrid) => {
-            // すべてのセルが0であることを確認
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            
+            // グリッド全体が期待通りかチェック
             for (let i = 0; i < 30; i++) {
                 for (let j = 0; j < 30; j++) {
-                    if (nextGrid[i][j] !== 0) return false;
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
                 }
             }
             return true;
@@ -29,7 +35,19 @@ const testCases = [
             return grid;
         },
         verify: (initialGrid, nextGrid) => {
-            return nextGrid[10][10] === 0;  // 次のステップでは死んでいるはず
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            
+            // グリッド全体が期待通りかチェック
+            for (let i = 0; i < 30; i++) {
+                for (let j = 0; j < 30; j++) {
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
         expectedGrid: () => {
             // 空のグリッドを返す（単一セルは死ぬ）
@@ -50,11 +68,23 @@ const testCases = [
             return grid;
         },
         verify: (initialGrid, nextGrid) => {
-            // ブロックは安定しているはず
-            return nextGrid[10][10] === 1 &&
-                   nextGrid[10][11] === 1 &&
-                   nextGrid[11][10] === 1 &&
-                   nextGrid[11][11] === 1;
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            expectedGrid[10][10] = 1;
+            expectedGrid[10][11] = 1;
+            expectedGrid[11][10] = 1;
+            expectedGrid[11][11] = 1;
+            
+            // グリッド全体が期待通りかチェック
+            for (let i = 0; i < 30; i++) {
+                for (let j = 0; j < 30; j++) {
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
         expectedGrid: () => {
             // 2x2のブロックを返す（安定している）
@@ -79,12 +109,22 @@ const testCases = [
             return grid;
         },
         verify: (initialGrid, nextGrid) => {
-            // 横3つに変わるはず
-            return nextGrid[11][9] === 1 &&
-                   nextGrid[11][10] === 1 &&
-                   nextGrid[11][11] === 1 &&
-                   nextGrid[10][10] === 0 &&
-                   nextGrid[12][10] === 0;
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            expectedGrid[11][9] = 1;
+            expectedGrid[11][10] = 1;
+            expectedGrid[11][11] = 1;
+            
+            // グリッド全体が期待通りかチェック
+            for (let i = 0; i < 30; i++) {
+                for (let j = 0; j < 30; j++) {
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
         expectedGrid: () => {
             // 横3つのブリンカーを返す
@@ -108,8 +148,23 @@ const testCases = [
             return grid;
         },
         verify: (initialGrid, nextGrid) => {
-            // 中央のセルが誕生するはず
-            return nextGrid[10][10] === 1;
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            expectedGrid[10][9] = 1;
+            expectedGrid[10][10] = 1;
+            expectedGrid[10][11] = 1;
+            expectedGrid[11][10] = 1;
+            
+            // グリッド全体が期待通りかチェック
+            for (let i = 0; i < 30; i++) {
+                for (let j = 0; j < 30; j++) {
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
         expectedGrid: () => {
             // 中央のセルが誕生した状態を返す
@@ -137,12 +192,29 @@ const testCases = [
             return grid;
         },
         verify: (initialGrid, nextGrid) => {
-            // 中央のセルは過密で死ぬはず
-            return nextGrid[10][10] === 0;
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            // 周囲のセルは生きているが、中央のセルは死んでいる
+            expectedGrid[9][9] = 1;
+            expectedGrid[9][10] = 1;
+            expectedGrid[9][11] = 1;
+            expectedGrid[10][9] = 1;
+            expectedGrid[11][9] = 1;
+            // 中央のセル (10,10) は死んでいる (0)
+            
+            // グリッド全体が期待通りかチェック
+            for (let i = 0; i < 30; i++) {
+                for (let j = 0; j < 30; j++) {
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
         expectedGrid: () => {
             // 中央のセルが死んだ状態を返す
-            // verify関数では中央のセルが死んでいることだけをチェックしている
             const grid = Array(30).fill().map(() => Array(30).fill(0));
             // 周囲のセルは生きているが、中央のセルは死んでいる
             grid[9][9] = 1;
@@ -166,8 +238,19 @@ const testCases = [
             return grid;
         },
         verify: (initialGrid, nextGrid) => {
-            // 中央のセルは過疎で死ぬはず
-            return nextGrid[10][10] === 0;
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            
+            // グリッド全体が期待通りかチェック
+            for (let i = 0; i < 30; i++) {
+                for (let j = 0; j < 30; j++) {
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
         expectedGrid: () => {
             // 空のグリッドを返す（両方のセルが死ぬ）
@@ -186,8 +269,22 @@ const testCases = [
             return grid;
         },
         verify: (initialGrid, nextGrid) => {
-            // 中央のセルは生存するはず
-            return nextGrid[10][10] === 1;
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            expectedGrid[9][9] = 1;
+            expectedGrid[9][10] = 1;
+            expectedGrid[10][10] = 1;
+            
+            // グリッド全体が期待通りかチェック
+            for (let i = 0; i < 30; i++) {
+                for (let j = 0; j < 30; j++) {
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
         expectedGrid: () => {
             // 中央のセルが生存した状態を返す
@@ -211,12 +308,26 @@ const testCases = [
             return grid;
         },
         verify: (initialGrid, nextGrid) => {
-            // 中央のセルは生存するはず
-            return nextGrid[10][10] === 1;
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            expectedGrid[9][9] = 1;
+            expectedGrid[9][10] = 1;
+            expectedGrid[9][11] = 1;
+            expectedGrid[10][10] = 1;
+            
+            // グリッド全体が期待通りかチェック
+            for (let i = 0; i < 30; i++) {
+                for (let j = 0; j < 30; j++) {
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
         expectedGrid: () => {
             // 中央のセルが生存した状態を返す
-            // verify関数では中央のセルが生存していることだけをチェックしている
             const grid = Array(30).fill().map(() => Array(30).fill(0));
             grid[9][9] = 1;
             grid[9][10] = 1;
@@ -238,8 +349,23 @@ const testCases = [
             return grid;
         },
         verify: (initialGrid, nextGrid) => {
-            // 右下のセルが誕生するはず
-            return nextGrid[1][1] === 1;
+            // 期待されるグリッドを取得
+            const expectedGrid = Array(30).fill().map(() => Array(30).fill(0));
+            expectedGrid[0][0] = 1;
+            expectedGrid[0][1] = 1;
+            expectedGrid[1][0] = 1;
+            expectedGrid[1][1] = 1;
+            
+            // グリッド全体が期待通りかチェック
+            for (let i = 0; i < 30; i++) {
+                for (let j = 0; j < 30; j++) {
+                    if (nextGrid[i][j] !== expectedGrid[i][j]) {
+                        console.log(`不一致: [${i}][${j}] 期待値=${expectedGrid[i][j]}, 実際値=${nextGrid[i][j]}`);
+                        return false;
+                    }
+                }
+            }
+            return true;
         },
         expectedGrid: () => {
             // 右下のセルが誕生した状態を返す
